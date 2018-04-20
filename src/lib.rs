@@ -27,11 +27,11 @@ pub struct CoordinatePair {
 }
 
 impl CoordinatePair {
-    pub fn straight(x: f32, y: f32) -> Self {
+    pub fn point(x: f32, y: f32) -> Self {
         CoordinatePair { x, y, bulge: None }
     }
 
-    pub fn arc(x: f32, y: f32, bulge: f32) -> Self {
+    pub fn point_arc(x: f32, y: f32, bulge: f32) -> Self {
         CoordinatePair { x, y, bulge: Some(bulge) }
     }
 }
@@ -94,6 +94,7 @@ impl Glyph {
                 } else if cp.y > bbox.y_max {
                     bbox.y_max = cp.y;
                 }
+                bbox.x_max = 10.0; // TODO
             }
         }
         bbox
@@ -106,16 +107,40 @@ pub struct Alphabet;
 #[wasm_bindgen]
 impl Alphabet {
     pub fn a() -> Glyph {
-        log!("Creating glyph a...");
+        log!("Creating glyph A...");
         Glyph::new(vec![
             vec![
-                CoordinatePair::straight(0.0, 0.0),
-                CoordinatePair::straight(3.0, 9.0),
-                CoordinatePair::straight(6.0, 0.0),
+                CoordinatePair::point(0.0, 0.0),
+                CoordinatePair::point(3.0, 9.0),
+                CoordinatePair::point(6.0, 0.0),
             ],
             vec![
-                CoordinatePair::straight(1.2, 3.6),
-                CoordinatePair::straight(4.8, 3.6),
+                CoordinatePair::point(1.2, 3.6),
+                CoordinatePair::point(4.8, 3.6),
+            ],
+        ])
+    }
+
+    pub fn b() -> Glyph {
+        log!("Creating glyph B...");
+        Glyph::new(vec![
+            vec![
+                CoordinatePair::point(0.0, 0.0),
+                CoordinatePair::point_arc(0.0, 9.0, -7.75),
+                CoordinatePair::point_arc(0.0, 4.5, -7.75),
+                CoordinatePair::point(0.0, 0.0),
+            ],
+        ])
+    }
+
+    pub fn f() -> Glyph {
+        log!("Creating glyph f...");
+        Glyph::new(vec![
+            vec![
+                CoordinatePair::point(1.0, 0.0),
+                CoordinatePair::point_arc(1.0, 7.5, -4.5),
+                CoordinatePair::point(2.5, 9.0),
+                CoordinatePair::point(3.0, 9.0),
             ],
         ])
     }
