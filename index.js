@@ -26,6 +26,14 @@ canvas.height = height * SCALE_FACTOR;
 
 const ctx = canvas.getContext("2d");
 
+/**
+ * Canvas coordinates start at the top left, while FontoBene coordiantes start
+ * at the bottom left. Therefore we need to invert the Y axis.
+ */
+function fixY(y) {
+    return height - y;
+}
+
 const drawCanvas = (glyph) => {
     ctx.beginPath();
     ctx.lineWidth = 1 / window.devicePixelRatio;
@@ -37,7 +45,7 @@ const drawCanvas = (glyph) => {
     for (let i = 0; i < count; i++) {
         const offset = i * 3;
         const x = data[offset];
-        const y = data[offset + 1];
+        const y = fixY(data[offset + 1]);
         const bulge = data[offset + 2];
         console.debug("x=", x, ", y=", y, ", bulge=", bulge);
 
