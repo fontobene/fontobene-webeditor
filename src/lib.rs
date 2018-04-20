@@ -46,29 +46,10 @@ pub struct Glyph {
 #[wasm_bindgen]
 #[derive(Clone, Debug, PartialEq, Default)]
 pub struct BoundingBox {
-    x_min: f32,
-    x_max: f32,
-    y_min: f32,
-    y_max: f32,
-}
-
-#[wasm_bindgen]
-impl BoundingBox {
-    pub fn x_min(&self) -> f32 {
-        self.x_min
-    }
-
-    pub fn x_max(&self) -> f32 {
-        self.x_max
-    }
-
-    pub fn y_min(&self) -> f32 {
-        self.y_min
-    }
-
-    pub fn y_max(&self) -> f32 {
-        self.y_max
-    }
+    pub x_min: f32,
+    pub x_max: f32,
+    pub y_min: f32,
+    pub y_max: f32,
 }
 
 impl Glyph {

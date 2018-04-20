@@ -5,13 +5,13 @@ const LINE_COLOR = "#444444";
 const SCALE_FACTOR = 10.0;
 
 function getWidth(bbox) {
-    const xOffset = bbox.x_min();
-    return bbox.x_max() - xOffset;
+    const xOffset = bbox.x_min;
+    return bbox.x_max - xOffset;
 }
 
 function getHeight(bbox) {
-    const yOffset = bbox.y_min();
-    return bbox.y_max() - yOffset;
+    const yOffset = bbox.y_min;
+    return bbox.y_max - yOffset;
 }
 
 const glyph = Alphabet.a();
